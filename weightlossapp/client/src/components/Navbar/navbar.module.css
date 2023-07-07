@@ -1,0 +1,20 @@
+.body {
+  width: 100vw;
+  height: 100px;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 24px;
+  margin-left: 20px;
+}
+.rightSideLinks {
+  display: flex;
+  justify-content: space-evenly;
+  width: 20%;
+}
