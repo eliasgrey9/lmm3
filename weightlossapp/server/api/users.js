@@ -70,7 +70,7 @@ router.post("/signUp", async (req, res) => {
 
     const newUser = {
       email: req.body.email,
-      fullName: req.body.fullName,
+      username: req.body.username,
       password: hashedPassword,
     };
 

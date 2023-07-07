@@ -10,6 +10,7 @@ const Home = () => {
   const navigate = useNavigate();
   const API_URL = process.env.REACT_APP_API_URL;
   const { userId } = useParams();
+
   useEffect(() => {
     const checkUser = async () => {
       const token = localStorage.getItem("authToken");
@@ -38,6 +39,7 @@ const Home = () => {
 
     checkUser();
   }, [userId, navigate]);
+
   return (
     <>
       <Navbar userSignedIn={userSignedIn} setUserSignedIn={setUserSignedIn} />
