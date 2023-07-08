@@ -10,13 +10,21 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
   font-size: 0;
   cursor: pointer;
-  background-color: transparent;
+  background-color: black;
+  color: white;
   border: none;
+  border-radius: 5px;
   outline: none;
+}
+
+.arrow:hover {
+  color: rgb(67, 67, 253);
+  transition: ease-in 0.25s;
 }
 
 .prev {
@@ -29,6 +37,7 @@
 .slide {
   height: 700px;
 }
+
 /* .prev:before,
 .next:before {
   content: "";

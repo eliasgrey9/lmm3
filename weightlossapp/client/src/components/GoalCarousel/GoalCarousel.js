@@ -1,11 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import style from "./goalCarousel.module.css";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import Slide1 from "./Slide1/Slide1";
+import Slide2 from "./Slide2/Slide2";
+import Slide3 from "./Slide3/Slide3";
+import Slide4 from "./Slide4/Slide4";
+import Slide5 from "./Slide5/Slide5";
+const API_URL = process.env.REACT_APP_API_URL;
 
-const MyCarousel = () => {
+const MyCarousel = ({ userId, user }) => {
+  const [poundsToLose, setPoundsToLose] = useState(50);
+  const [validatorEmail, setValidatorEmail] = useState("johndoe@gmail.com");
+  const [giftCardValue, setGiftCardValue] = useState(25);
+  const [deadlineDate, setDeadlineDate] = useState(new Date());
+
+  const createGoal = async () => {
+    const goalData = {
+      pounds: poundsToLose,
+      validatorEmail: validatorEmail,
+      deadline: deadlineDate,
+      userId: userId,
+    };
+
+    try {
+      const response = await axios.post(`${API_URL}/createGoal`, goalData);
+      console.log("RESPONSE", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const handlePaymentSuccess = (token) => {
+    // Perform actions after successful payment
+    console.log("Payment successful!");
+    console.log(token);
+  };
+
   return (
     <Carousel
       showThumbs={false}
@@ -28,16 +61,42 @@ const MyCarousel = () => {
       className={style.carousel}
     >
       <div className={style.slide}>
-        <Slide1 />
+        <Slide1 poundsToLose={poundsToLose} setPoundsToLose={setPoundsToLose} />
       </div>
-      <div>
-        <h3>Slide 2</h3>
+
+      <div className={style.slide}>
+        <Slide2
+          deadlineDate={deadlineDate}
+          setDeadlineDate={setDeadlineDate}
+          poundsToLose={poundsToLose}
+          createGoal={createGoal}
+        />
       </div>
-      <div>
-        <h3>Slide 3</h3>
+      <div className={style.slide}>
+        <Slide3
+          validatorEmail={validatorEmail}
+          setValidatorEmail={setValidatorEmail}
+        />
       </div>
-      <div>
-        <h3>Slide 4</h3>
+      <div className={style.slide}>
+        <Slide4
+          giftCardValue={giftCardValue}
+          setGiftCardValue={setGiftCardValue}
+        />
+      </div>
+
+      <div className={style.slide}>
+        <Slide5
+          user={user}
+          poundsToLose={poundsToLose}
+          validatorEmail={validatorEmail}
+          amount={giftCardValue}
+          deadlineDate={deadlineDate}
+          giftCardValue={giftCardValue}
+          currency="USD"
+          publishableKey="YOUR_PUBLISHABLE_KEY"
+          onPaymentSuccess={handlePaymentSuccess}
+        />
       </div>
     </Carousel>
   );

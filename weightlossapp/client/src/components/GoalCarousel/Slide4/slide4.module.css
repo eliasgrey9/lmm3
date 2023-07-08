@@ -1,0 +1,47 @@
+.container {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.giftCardRow {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 250px;
+  border: solid black 1px;
+  border-radius: 20px;
+  font-size: 40px;
+}
+.card:hover {
+  cursor: pointer;
+  background-color: rgb(67, 67, 253);
+  transition: ease-in 0.25s;
+  color: white;
+}
+
+.selected {
+  background-color: rgb(67, 67, 253);
+  color: white;
+}
+.heading {
+  margin-bottom: 5%;
+  font-size: 40px;
+}
+
+.giftCardValue {
+  font-size: 40px;
+  margin-bottom: 5%;
+  font-weight: bold;
+  color: rgb(67, 67, 253);
+}

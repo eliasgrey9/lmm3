@@ -5,9 +5,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Hero from "../Hero/Hero";
 import GoalCarousel from "../GoalCarousel/GoalCarousel";
+import { FaFlagCheckered } from "react-icons/fa";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 const Home = () => {
   const [userSignedIn, setUserSignedIn] = useState(false);
+  const [user, setUser] = useState();
 
   const navigate = useNavigate();
   const API_URL = process.env.REACT_APP_API_URL;
@@ -25,6 +28,7 @@ const Home = () => {
         );
         if (response) {
           // User is signed in and the ID matches
+          setUser(response.data);
           setUserSignedIn(true);
         } else {
           // User is not signed in or the ID doesn't match
@@ -47,7 +51,13 @@ const Home = () => {
       <Navbar userSignedIn={userSignedIn} setUserSignedIn={setUserSignedIn} />
       <div className={style.body}>
         <Hero />
-        <GoalCarousel />
+        <div className={style.getStartedSection}>
+          <div>
+            <span>Getting started </span>
+            <FaFlagCheckered />
+          </div>
+        </div>
+        <GoalCarousel userId={userId} user={user} />
       </div>
       ;
     </>

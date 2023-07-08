@@ -7,7 +7,7 @@ const Hero = () => {
 
   useEffect(() => {
     const sentence =
-      "I pledge to lose 23 pounds before August 23rd or else I will give Austin Fisher a $100 Gift card.";
+      "I pledge to lose 23 pounds before the end of August 23rd or else johndoe@gmail.com will recieve a prepaid digital $100 Amazon gift card.";
 
     const typeSentence = () => {
       if (currentIndex < sentence.length) {
@@ -31,11 +31,11 @@ const Hero = () => {
       "pounds",
       "August",
       "23rd",
-      "Austin",
-      "Fisher",
       "$100",
-      "Gift",
+      "gift",
+      "Amazon",
       "card.",
+      " johndoe@gmail.com",
     ];
     const highlightedSentence = sentence.split(" ").map((word, index) => {
       if (wordsToHighlight.includes(word)) {

@@ -1,0 +1,19 @@
+.container {
+  width: 100vw;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.heading {
+  margin-bottom: 5%;
+  font-size: 40px;
+}
+
+.purpleText {
+  font-size: 40px;
+  margin-bottom: 5%;
+  font-weight: bold;
+  color: rgb(67, 67, 253);
+}
