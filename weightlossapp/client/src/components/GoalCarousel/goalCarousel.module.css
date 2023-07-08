@@ -1,0 +1,44 @@
+.carousel {
+  position: relative;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  font-size: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+.slide {
+  height: 700px;
+}
+/* .prev:before,
+.next:before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: #000; 
+} */
+
+/* Add hover styles if desired */
+/* .prev:hover,
+.next:hover {
+} */

@@ -3,6 +3,8 @@ import style from "./home.module.css";
 import Navbar from "../Navbar/Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Hero from "../Hero/Hero";
+import GoalCarousel from "../GoalCarousel/GoalCarousel";
 
 const Home = () => {
   const [userSignedIn, setUserSignedIn] = useState(false);
@@ -43,7 +45,11 @@ const Home = () => {
   return (
     <>
       <Navbar userSignedIn={userSignedIn} setUserSignedIn={setUserSignedIn} />
-      <div className={style.body}>Home</div>;
+      <div className={style.body}>
+        <Hero />
+        <GoalCarousel />
+      </div>
+      ;
     </>
   );
 };
