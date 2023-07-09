@@ -1,7 +1,22 @@
 import React from "react";
 import style from "./slide4.module.css";
 
-const Slide4 = ({ giftCardValue, setGiftCardValue }) => {
+const Slide4 = ({ giftCardValue, setGiftCardValue, setStripeTotal }) => {
+  const twentyFiveDollarGiftCard = () => {
+    setGiftCardValue(25);
+    setStripeTotal(30);
+  };
+
+  const fiftyDollarGiftCard = () => {
+    setGiftCardValue(50);
+    setStripeTotal(55);
+  };
+
+  const OneHundredDollarGiftCard = () => {
+    setGiftCardValue(100);
+    setStripeTotal(105);
+  };
+
   return (
     <div className={style.container}>
       <div className={style.heading}>
@@ -14,9 +29,7 @@ const Slide4 = ({ giftCardValue, setGiftCardValue }) => {
 
       <div className={style.giftCardRow}>
         <div
-          onClick={() => {
-            setGiftCardValue(25);
-          }}
+          onClick={twentyFiveDollarGiftCard}
           className={`${style.card} ${
             giftCardValue === 25 ? style.selected : ""
           }`}
@@ -24,9 +37,7 @@ const Slide4 = ({ giftCardValue, setGiftCardValue }) => {
           $25
         </div>
         <div
-          onClick={() => {
-            setGiftCardValue(50);
-          }}
+          onClick={fiftyDollarGiftCard}
           className={`${style.card} ${
             giftCardValue === 50 ? style.selected : ""
           }`}
@@ -34,9 +45,7 @@ const Slide4 = ({ giftCardValue, setGiftCardValue }) => {
           $50
         </div>
         <div
-          onClick={() => {
-            setGiftCardValue(100);
-          }}
+          onClick={OneHundredDollarGiftCard}
           className={`${style.card} ${
             giftCardValue === 100 ? style.selected : ""
           }`}

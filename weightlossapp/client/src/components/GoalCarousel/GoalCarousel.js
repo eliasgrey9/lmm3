@@ -16,7 +16,7 @@ const MyCarousel = ({ userId, user }) => {
   const [validatorEmail, setValidatorEmail] = useState("johndoe@gmail.com");
   const [giftCardValue, setGiftCardValue] = useState(25);
   const [deadlineDate, setDeadlineDate] = useState(new Date());
-  const [stripeTotal, setStripeTotal] = useState(giftCardValue + 5);
+  const [stripeTotal, setStripeTotal] = useState();
 
   const createGoal = async () => {
     const goalData = {
@@ -86,6 +86,7 @@ const MyCarousel = ({ userId, user }) => {
           </div>
           <div className={style.slide}>
             <Slide4
+              setStripeTotal={setStripeTotal}
               giftCardValue={giftCardValue}
               setGiftCardValue={setGiftCardValue}
             />
