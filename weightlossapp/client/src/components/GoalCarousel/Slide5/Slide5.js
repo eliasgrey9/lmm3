@@ -11,6 +11,7 @@ const Slide5 = ({
   onPaymentSuccess,
   deadlineDate,
   user,
+  stripeTotal,
 }) => {
   const handleToken = (token) => {
     // Send the token to your server for further processing
@@ -22,9 +23,9 @@ const Slide5 = ({
   return (
     <div className={style.container}>
       <div className={style.goalText}>
-        <div className={style.heading}>Your goal is ready!</div>I pledge to lose{" "}
-        <span className={style.purpleColor}>{poundsToLose} pounds</span> before
-        the end of{" "}
+        <div className={style.heading}>Your goal is ready!</div>I pledge to
+        weigh <span className={style.purpleColor}>{poundsToLose} pounds</span>{" "}
+        before the end of{" "}
         <span className={style.purpleColor}>
           {deadlineDate.toLocaleDateString()}
         </span>{" "}
@@ -33,19 +34,25 @@ const Slide5 = ({
         <span className={style.purpleColor}>${amount} Amazon gift card</span> .
         <div>-{user.username}</div>
       </div>
-      <div className={style.checkout}>
-        <StripeCheckout
-          amount={amount * 100} // The payment amount in cents
-          currency={currency} // The currency code (e.g., "USD")
-          token={handleToken} // Callback function to handle the token after payment
-          stripeKey={publishableKey} // Your Stripe publishable key
-          style={{ display: "none" }} // Hide the default button
-          // stripeClassName={style.stripeButton} // Apply custom class to the container
-        >
-          {/* Place custom button here */}
-          <button className={style.stripeBtn}>Stripe checkout</button>
-        </StripeCheckout>
+      <div className={style.checkoutText}>
+        Prepay now, on {deadlineDate.toLocaleDateString()} we'll ask{" "}
+        {validatorEmail} if you lost {poundsToLose} pounds. If so, you will
+        recieve the gift card code if you made weight. If not we will share this
+        code with {validatorEmail}.
       </div>
+      <StripeCheckout
+        amount={stripeTotal * 100} // The payment amount in cents
+        currency={currency} // The currency code (e.g., "USD")
+        token={handleToken} // Callback function to handle the token after payment
+        stripeKey={publishableKey} // Your Stripe publishable key
+        style={{ display: "none" }} // Hide the default button
+        // stripeClassName={style.stripeButton} // Apply custom class to the container
+      >
+        <div className={style.notice}>
+          We charge a $5.00 flat transaction fee for the total amount due.{" "}
+        </div>
+        <button className={style.stripeBtn}>Pay ${stripeTotal}</button>
+      </StripeCheckout>
     </div>
   );
 };

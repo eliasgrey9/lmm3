@@ -12,10 +12,11 @@ import Slide5 from "./Slide5/Slide5";
 const API_URL = process.env.REACT_APP_API_URL;
 
 const MyCarousel = ({ userId, user }) => {
-  const [poundsToLose, setPoundsToLose] = useState(50);
+  const [poundsToLose, setPoundsToLose] = useState(150);
   const [validatorEmail, setValidatorEmail] = useState("johndoe@gmail.com");
   const [giftCardValue, setGiftCardValue] = useState(25);
   const [deadlineDate, setDeadlineDate] = useState(new Date());
+  const [stripeTotal, setStripeTotal] = useState(giftCardValue + 5);
 
   const createGoal = async () => {
     const goalData = {
@@ -40,65 +41,89 @@ const MyCarousel = ({ userId, user }) => {
   };
 
   return (
-    <Carousel
-      showThumbs={false}
-      renderArrowPrev={(onClickHandler, hasPrev) =>
-        hasPrev && (
-          <AiOutlineArrowLeft
-            className={`${style.arrow} ${style.prev}`}
-            onClick={onClickHandler}
-          />
-        )
-      }
-      renderArrowNext={(onClickHandler, hasNext) =>
-        hasNext && (
-          <AiOutlineArrowRight
-            className={`${style.arrow} ${style.next}`}
-            onClick={onClickHandler}
-          />
-        )
-      }
-      className={style.carousel}
-    >
-      <div className={style.slide}>
-        <Slide1 poundsToLose={poundsToLose} setPoundsToLose={setPoundsToLose} />
-      </div>
+    <>
+      {user ? (
+        <Carousel
+          showThumbs={false}
+          renderArrowPrev={(onClickHandler, hasPrev) =>
+            hasPrev && (
+              <AiOutlineArrowLeft
+                className={`${style.arrow} ${style.prev}`}
+                onClick={onClickHandler}
+              />
+            )
+          }
+          renderArrowNext={(onClickHandler, hasNext) =>
+            hasNext && (
+              <AiOutlineArrowRight
+                className={`${style.arrow} ${style.next}`}
+                onClick={onClickHandler}
+              />
+            )
+          }
+          className={style.carousel}
+        >
+          <div className={style.slide}>
+            <Slide1
+              poundsToLose={poundsToLose}
+              setPoundsToLose={setPoundsToLose}
+            />
+          </div>
 
-      <div className={style.slide}>
-        <Slide2
-          deadlineDate={deadlineDate}
-          setDeadlineDate={setDeadlineDate}
-          poundsToLose={poundsToLose}
-          createGoal={createGoal}
-        />
-      </div>
-      <div className={style.slide}>
-        <Slide3
-          validatorEmail={validatorEmail}
-          setValidatorEmail={setValidatorEmail}
-        />
-      </div>
-      <div className={style.slide}>
-        <Slide4
-          giftCardValue={giftCardValue}
-          setGiftCardValue={setGiftCardValue}
-        />
-      </div>
+          <div className={style.slide}>
+            <Slide2
+              deadlineDate={deadlineDate}
+              setDeadlineDate={setDeadlineDate}
+              poundsToLose={poundsToLose}
+              createGoal={createGoal}
+            />
+          </div>
+          <div className={style.slide}>
+            <Slide3
+              validatorEmail={validatorEmail}
+              setValidatorEmail={setValidatorEmail}
+            />
+          </div>
+          <div className={style.slide}>
+            <Slide4
+              giftCardValue={giftCardValue}
+              setGiftCardValue={setGiftCardValue}
+            />
+          </div>
 
-      <div className={style.slide}>
-        <Slide5
-          user={user}
-          poundsToLose={poundsToLose}
-          validatorEmail={validatorEmail}
-          amount={giftCardValue}
-          deadlineDate={deadlineDate}
-          giftCardValue={giftCardValue}
-          currency="USD"
-          publishableKey="YOUR_PUBLISHABLE_KEY"
-          onPaymentSuccess={handlePaymentSuccess}
-        />
-      </div>
-    </Carousel>
+          <div className={style.slide}>
+            <Slide5
+              stripeTotal={stripeTotal}
+              user={user}
+              poundsToLose={poundsToLose}
+              validatorEmail={validatorEmail}
+              amount={giftCardValue}
+              deadlineDate={deadlineDate}
+              giftCardValue={giftCardValue}
+              currency="USD"
+              publishableKey="YOUR_PUBLISHABLE_KEY"
+              onPaymentSuccess={handlePaymentSuccess}
+            />
+          </div>
+        </Carousel>
+      ) : (
+        <>
+          <div className={style.container}>
+            To make a goal, please{" "}
+            <span>
+              <a className={style.anchor} href="/signIn">
+                sign in
+              </a>{" "}
+              or{" "}
+              <a className={style.anchor} href="/signUp">
+                sign up
+              </a>
+              !
+            </span>
+          </div>
+        </>
+      )}
+    </>
   );
 };
 

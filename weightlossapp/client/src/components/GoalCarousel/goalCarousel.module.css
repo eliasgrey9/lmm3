@@ -37,7 +37,17 @@
 .slide {
   height: 700px;
 }
-
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 700px;
+  width: 100vw;
+}
+.anchor {
+  color: black;
+}
 /* .prev:before,
 .next:before {
   content: "";

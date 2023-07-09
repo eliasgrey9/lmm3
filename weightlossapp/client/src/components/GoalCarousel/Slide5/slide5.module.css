@@ -1,7 +1,8 @@
 .container {
   width: 100vw;
-  height: 100%;
+  height: 700px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
 }
@@ -15,6 +16,7 @@
   border-radius: 5px;
   font-size: 24px;
   cursor: pointer;
+  margin-top: 20px;
 }
 .stripeBtn:hover {
   transition: ease-in 0.5s;
@@ -22,16 +24,13 @@
 }
 
 .goalText {
-  border: solid black 1px;
-  border-radius: 50px;
   width: 40%;
-  height: 90%;
-  padding: 20px;
-  font-size: 40px;
+  padding: 10px;
+  font-size: 30px;
   line-height: 1.5;
 }
 .purpleColor {
-  color: rgb(40, 40, 214);
+  color: rgb(67, 67, 253);
   font-weight: bold;
   line-height: 1.5;
 }
@@ -39,9 +38,22 @@
 .heading {
   font-weight: bolder;
   margin-bottom: 20px;
+  padding: 10px;
+  font-size: 30px;
+  line-height: 1.5;
 }
 
 .checkout {
+  border: solid 1px black;
+  border-radius: 5px;
   width: 40%;
-  height: 90%;
+  height: 600px;
+}
+.checkoutText {
+  width: 40%;
+  font-size: 25px;
+}
+
+.notice {
+  font-style: italic;
 }

@@ -35,7 +35,7 @@ const Hero = () => {
       "gift",
       "Amazon",
       "card.",
-      " johndoe@gmail.com",
+      "johndoe@gmail.com",
     ];
     const highlightedSentence = sentence.split(" ").map((word, index) => {
       if (wordsToHighlight.includes(word)) {

@@ -10,14 +10,14 @@ const Slide1 = ({ poundsToLose, setPoundsToLose }) => {
     <>
       <div className={style.sliderContainer}>
         <div className={style.heading}>
-          I pledge to lose <span className={style.value}>{poundsToLose} </span>
+          I pledge to weigh <span className={style.value}>{poundsToLose} </span>
           pounds before...
         </div>
 
         <input
           type="range"
-          min="5"
-          max="100"
+          min="100"
+          max="600"
           value={poundsToLose}
           className={style.slider}
           onChange={handleChange}
