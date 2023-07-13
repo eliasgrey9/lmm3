@@ -13,10 +13,10 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const MyCarousel = ({ userId, user }) => {
   const [poundsToLose, setPoundsToLose] = useState(150);
-  const [validatorEmail, setValidatorEmail] = useState("johndoe@gmail.com");
+  const [validatorEmail, setValidatorEmail] = useState("");
   const [giftCardValue, setGiftCardValue] = useState(25);
   const [deadlineDate, setDeadlineDate] = useState(new Date());
-  const [stripeTotal, setStripeTotal] = useState();
+  const [stripeTotal, setStripeTotal] = useState(giftCardValue + 5);
 
   const createGoal = async () => {
     const goalData = {

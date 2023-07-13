@@ -50,10 +50,33 @@
   height: 600px;
 }
 .checkoutText {
-  width: 40%;
+  width: 50%;
   font-size: 25px;
+  line-height: 1.25;
 }
 
 .notice {
   font-style: italic;
+}
+.howItWorks {
+  margin-bottom: 10px;
+  padding: 3px;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.invalidEmailMessage {
+  color: red;
+  font-size: 18px;
+}
+.disabledStripeBtn {
+  background-color: gray;
+  color: white;
+  border: none;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 24px;
+  cursor: pointer;
+  margin-top: 20px;
 }

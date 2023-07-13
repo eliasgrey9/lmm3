@@ -19,8 +19,32 @@
 }
 
 .input {
-  width: 30%;
+  width: 30vw;
   height: 40px;
   font-size: 24px;
   padding: 10px;
+  background-color: white;
+}
+.verifyBtn {
+  width: 10vw;
+  height: 40px;
+  font-size: 20px;
+}
+.inputAndBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+.invalidEmail {
+  width: 40%;
+  text-align: start;
+  font-weight: bold;
+  color: red;
+}
+.validEmail {
+  width: 40%;
+  text-align: start;
+  font-weight: bold;
+  color: rgb(12, 194, 85);
 }

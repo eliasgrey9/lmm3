@@ -16,7 +16,8 @@
         "react-scripts": "^5.0.1",
         "react-slick": "^0.29.0",
         "react-stripe-checkout": "^2.6.3",
-        "slick-carousel": "^1.8.1"
+        "slick-carousel": "^1.8.1",
+        "validator": "^13.9.0"
     },
     "devDependencies": {
         "@babel/core": "^7.20.5",

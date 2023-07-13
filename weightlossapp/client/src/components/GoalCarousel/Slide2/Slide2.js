@@ -3,12 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import style from "./slide2.module.css";
 
-const Slide2 = ({
-  deadlineDate,
-  setDeadlineDate,
-  poundsToLose,
-  createGoal,
-}) => {
+const Slide2 = ({ deadlineDate, setDeadlineDate }) => {
   const handleDateChange = (date) => {
     setDeadlineDate(date);
   };
@@ -28,6 +23,7 @@ const Slide2 = ({
       </h2>
       <Calendar
         className={style.calendar}
+        s
         onChange={handleDateChange}
         value={deadlineDate}
         minDate={new Date()}

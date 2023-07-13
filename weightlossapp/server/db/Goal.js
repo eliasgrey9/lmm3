@@ -2,12 +2,8 @@ const Sequelize = require("sequelize");
 const db = require("./database");
 
 module.exports = db.define("goal", {
-  pounds: {
+  weightGoal: {
     type: Sequelize.INTEGER,
-  },
-
-  paid: {
-    type: Sequelize.BOOLEAN,
   },
 
   deadline: {
@@ -23,6 +19,7 @@ module.exports = db.define("goal", {
 
   goalReached: {
     type: Sequelize.BOOLEAN,
+    defaultValue: null,
   },
 
   giftCardLink: {

@@ -1,23 +1,26 @@
 import React from "react";
 import style from "./slide5.module.css";
-import StripeCheckout from "react-stripe-checkout";
+import axios from "axios";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Slide5 = ({
   amount,
-  currency,
-  publishableKey,
   poundsToLose,
   validatorEmail,
-  onPaymentSuccess,
   deadlineDate,
   user,
-  stripeTotal,
 }) => {
-  const handleToken = (token) => {
-    // Send the token to your server for further processing
-    // You can make an API request to your server to process the payment
-    console.log(token);
-    // You can call the `onPaymentSuccess` callback here if the payment was successful
+  const createCheckoutSession = async () => {
+    try {
+      const response = await axios.post(
+        `${API_URL}/api/stripe/create-checkout-session/${amount}/${user.id}`
+      );
+      if (response) {
+        window.location.href = response.data;
+      }
+    } catch (error) {
+      console.error("Error creating checkout session:", error);
+    }
   };
 
   return (
@@ -35,24 +38,31 @@ const Slide5 = ({
         <div>-{user.username}</div>
       </div>
       <div className={style.checkoutText}>
-        Prepay now, on {deadlineDate.toLocaleDateString()} we'll ask{" "}
-        {validatorEmail} if you lost {poundsToLose} pounds. If so, you will
-        recieve the gift card code if you made weight. If not we will share this
-        code with {validatorEmail}.
-      </div>
-      <StripeCheckout
-        amount={stripeTotal * 100} // The payment amount in cents
-        currency={currency} // The currency code (e.g., "USD")
-        token={handleToken} // Callback function to handle the token after payment
-        stripeKey={publishableKey} // Your Stripe publishable key
-        style={{ display: "none" }} // Hide the default button
-        // stripeClassName={style.stripeButton} // Apply custom class to the container
-      >
-        <div className={style.notice}>
-          We charge a $5.00 flat transaction fee for the total amount due.{" "}
+        <div className={style.howItWorksHeading}>How it works</div>
+        <div className={style.howItWorks}>
+          Buy the gift card now to set the goal. In your profile, we will ask if
+          you met your goal. Choosing "Yes" will grant you the gift card code.
+          If you answer "No," the code will be shared with {validatorEmail}.
         </div>
-        <button className={style.stripeBtn}>Pay ${stripeTotal}</button>
-      </StripeCheckout>
+      </div>
+      {validatorEmail.length ? (
+        <button onClick={createCheckoutSession} className={style.stripeBtn}>
+          Set Goal
+        </button>
+      ) : (
+        <>
+          <button
+            onClick={createCheckoutSession}
+            disabled={true}
+            className={style.disabledStripeBtn}
+          >
+            Oops!
+          </button>
+          <div className={style.invalidEmailMessage}>
+            You entered an invalid email on the previous slide
+          </div>
+        </>
+      )}
     </div>
   );
 };
