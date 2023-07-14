@@ -4,16 +4,25 @@ import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
 const Slide5 = ({
-  amount,
-  poundsToLose,
+  weightGoal,
   validatorEmail,
   deadlineDate,
   user,
+  giftCardValue,
 }) => {
+  const goalData = {
+    weightGoal: weightGoal,
+    validatorEmail: validatorEmail,
+    deadline: deadlineDate,
+    userId: user.id,
+    goalReached: false,
+  };
+
   const createCheckoutSession = async () => {
     try {
       const response = await axios.post(
-        `${API_URL}/api/stripe/create-checkout-session/${amount}/${user.id}`
+        `${API_URL}/api/stripe/create-checkout-session/${giftCardValue}`,
+        goalData
       );
       if (response) {
         window.location.href = response.data;
@@ -27,14 +36,17 @@ const Slide5 = ({
     <div className={style.container}>
       <div className={style.goalText}>
         <div className={style.heading}>Your goal is ready!</div>I pledge to
-        weigh <span className={style.purpleColor}>{poundsToLose} pounds</span>{" "}
+        weigh <span className={style.purpleColor}>{weightGoal} pounds</span>{" "}
         before the end of{" "}
         <span className={style.purpleColor}>
           {deadlineDate.toLocaleDateString()}
         </span>{" "}
         or else <span className={style.purpleColor}>{validatorEmail}</span> will
         receive a prepaid digital{" "}
-        <span className={style.purpleColor}>${amount} Amazon gift card</span> .
+        <span className={style.purpleColor}>
+          ${giftCardValue} Amazon gift card
+        </span>{" "}
+        paid for by me.
         <div>-{user.username}</div>
       </div>
       <div className={style.checkoutText}>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import style from "./goalCarousel.module.css";
@@ -9,36 +8,12 @@ import Slide2 from "./Slide2/Slide2";
 import Slide3 from "./Slide3/Slide3";
 import Slide4 from "./Slide4/Slide4";
 import Slide5 from "./Slide5/Slide5";
-const API_URL = process.env.REACT_APP_API_URL;
 
 const MyCarousel = ({ userId, user }) => {
-  const [poundsToLose, setPoundsToLose] = useState(150);
+  const [weightGoal, setWeightGoal] = useState(150);
   const [validatorEmail, setValidatorEmail] = useState("");
   const [giftCardValue, setGiftCardValue] = useState(25);
   const [deadlineDate, setDeadlineDate] = useState(new Date());
-  const [stripeTotal, setStripeTotal] = useState(giftCardValue + 5);
-
-  const createGoal = async () => {
-    const goalData = {
-      pounds: poundsToLose,
-      validatorEmail: validatorEmail,
-      deadline: deadlineDate,
-      userId: userId,
-    };
-
-    try {
-      const response = await axios.post(`${API_URL}/createGoal`, goalData);
-      console.log("RESPONSE", response.data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-  const handlePaymentSuccess = (token) => {
-    // Perform actions after successful payment
-    console.log("Payment successful!");
-    console.log(token);
-  };
 
   return (
     <>
@@ -64,18 +39,14 @@ const MyCarousel = ({ userId, user }) => {
           className={style.carousel}
         >
           <div className={style.slide}>
-            <Slide1
-              poundsToLose={poundsToLose}
-              setPoundsToLose={setPoundsToLose}
-            />
+            <Slide1 weightGoal={weightGoal} setWeightGoal={setWeightGoal} />
           </div>
 
           <div className={style.slide}>
             <Slide2
               deadlineDate={deadlineDate}
               setDeadlineDate={setDeadlineDate}
-              poundsToLose={poundsToLose}
-              createGoal={createGoal}
+              weightGoal={weightGoal}
             />
           </div>
           <div className={style.slide}>
@@ -86,7 +57,6 @@ const MyCarousel = ({ userId, user }) => {
           </div>
           <div className={style.slide}>
             <Slide4
-              setStripeTotal={setStripeTotal}
               giftCardValue={giftCardValue}
               setGiftCardValue={setGiftCardValue}
             />
@@ -94,16 +64,11 @@ const MyCarousel = ({ userId, user }) => {
 
           <div className={style.slide}>
             <Slide5
-              stripeTotal={stripeTotal}
               user={user}
-              poundsToLose={poundsToLose}
+              weightGoal={weightGoal}
               validatorEmail={validatorEmail}
-              amount={giftCardValue}
               deadlineDate={deadlineDate}
               giftCardValue={giftCardValue}
-              currency="USD"
-              publishableKey="YOUR_PUBLISHABLE_KEY"
-              onPaymentSuccess={handlePaymentSuccess}
             />
           </div>
         </Carousel>

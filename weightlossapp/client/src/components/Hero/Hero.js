@@ -7,7 +7,7 @@ const Hero = () => {
 
   useEffect(() => {
     const sentence =
-      "I pledge to lose 23 pounds before the end of August 23rd or else johndoe@gmail.com will recieve a prepaid digital $100 Amazon gift card.";
+      "I pledge to lose 23 pounds before the end of August 23rd 2023 or else johndoe@gmail.com will recieve a prepaid digital $100 Amazon gift card.";
 
     const typeSentence = () => {
       if (currentIndex < sentence.length) {
@@ -31,6 +31,7 @@ const Hero = () => {
       "pounds",
       "August",
       "23rd",
+      "2023",
       "$100",
       "gift",
       "Amazon",

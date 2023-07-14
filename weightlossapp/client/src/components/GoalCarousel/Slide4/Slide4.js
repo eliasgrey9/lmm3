@@ -1,20 +1,17 @@
 import React from "react";
 import style from "./slide4.module.css";
 
-const Slide4 = ({ giftCardValue, setGiftCardValue, setStripeTotal }) => {
+const Slide4 = ({ giftCardValue, setGiftCardValue }) => {
   const twentyFiveDollarGiftCard = () => {
     setGiftCardValue(25);
-    setStripeTotal(30);
   };
 
   const fiftyDollarGiftCard = () => {
     setGiftCardValue(50);
-    setStripeTotal(55);
   };
 
   const OneHundredDollarGiftCard = () => {
     setGiftCardValue(100);
-    setStripeTotal(105);
   };
 
   return (

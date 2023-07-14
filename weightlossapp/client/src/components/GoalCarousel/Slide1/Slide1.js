@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import style from "./slide1.module.css";
 
-const Slide1 = ({ poundsToLose, setPoundsToLose }) => {
+const Slide1 = ({ weightGoal, setWeightGoal }) => {
   const handleChange = (event) => {
-    setPoundsToLose(event.target.value);
+    setWeightGoal(event.target.value);
   };
 
   return (
     <>
       <div className={style.sliderContainer}>
         <div className={style.heading}>
-          I pledge to weigh <span className={style.value}>{poundsToLose} </span>
+          I pledge to weigh <span className={style.value}>{weightGoal} </span>
           pounds before...
         </div>
 
@@ -18,7 +18,7 @@ const Slide1 = ({ poundsToLose, setPoundsToLose }) => {
           type="range"
           min="100"
           max="600"
-          value={poundsToLose}
+          value={weightGoal}
           className={style.slider}
           onChange={handleChange}
         />
