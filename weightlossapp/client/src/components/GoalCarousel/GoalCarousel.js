@@ -9,7 +9,7 @@ import Slide3 from "./Slide3/Slide3";
 import Slide4 from "./Slide4/Slide4";
 import Slide5 from "./Slide5/Slide5";
 
-const MyCarousel = ({ userId, user }) => {
+const MyCarousel = ({ userId, user, userSignedIn }) => {
   const [weightGoal, setWeightGoal] = useState(150);
   const [validatorEmail, setValidatorEmail] = useState("");
   const [giftCardValue, setGiftCardValue] = useState(25);
@@ -17,7 +17,7 @@ const MyCarousel = ({ userId, user }) => {
 
   return (
     <>
-      {user ? (
+      {userSignedIn ? (
         <Carousel
           showThumbs={false}
           renderArrowPrev={(onClickHandler, hasPrev) =>

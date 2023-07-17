@@ -28,4 +28,7 @@ module.exports = db.define("goal", {
       isUrl: true,
     },
   },
+  giftCardValue: {
+    type: Sequelize.INTEGER,
+  },
 });

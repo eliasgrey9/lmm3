@@ -7,8 +7,14 @@ const EXTERNAL_CLIENT_APP_URL = process.env.EXTERNAL_CLIENT_APP_URL;
 require("dotenv").config();
 
 router.post("/create-checkout-session/25", async (req, res) => {
-  const { userId, weightGoal, deadline, validatorEmail, goalReached } =
-    req.body;
+  const {
+    userId,
+    weightGoal,
+    deadline,
+    validatorEmail,
+    goalReached,
+    giftCardValue,
+  } = req.body;
 
   const session = await stripe.checkout.sessions.create({
     line_items: [
@@ -27,6 +33,7 @@ router.post("/create-checkout-session/25", async (req, res) => {
       deadline: deadline,
       validatorEmail: validatorEmail,
       goalReached: goalReached,
+      giftCardValue: giftCardValue,
     },
   });
 
@@ -58,23 +65,15 @@ router.post(
       const weightGoal = parseInt(metadata.weightGoal);
       const deadline = metadata.deadline;
       const validatorEmail = metadata.validatorEmail;
-      const goalReached = metadata.goalReached;
+      const giftCardValue = parseInt(metadata.giftCardValue);
 
       const response = await Goal.create({
         userId: userId,
         weightGoal: weightGoal,
         deadline: deadline,
         validatorEmail: validatorEmail,
-        goalReached: goalReached,
+        giftCardValue: giftCardValue,
       });
-
-      console.log("RESPONSE", response);
-
-      // console.log("userId", userId);
-      // console.log("weightGoal", weightGoal);
-      // console.log("deadline", deadline);
-      // console.log("validatorEmail", validatorEmail);
-      // console.log("goalReached", goalReached);
     }
 
     response.status(200).end();

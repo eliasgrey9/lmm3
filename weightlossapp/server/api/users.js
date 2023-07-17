@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { User } = require("../db");
+const { User, Goal } = require("../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
@@ -154,6 +154,26 @@ router.put("/change-password", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
+  }
+});
+router.get("/check-for-user-goal/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  console.log("HELLO", userId);
+
+  try {
+    const goal = await Goal.findOne({
+      where: { userId: userId, goalReached: null },
+    });
+
+    // Check if the user has a current goal
+    if (goal) {
+      // User has a goal
+      res.send(goal);
+    }
+  } catch (error) {
+    // Handle any errors that occur during the database query
+    console.error("Error retrieving user goal:", error);
+    res.status(500).send("An error occurred");
   }
 });
 

@@ -15,7 +15,7 @@ const Slide5 = ({
     validatorEmail: validatorEmail,
     deadline: deadlineDate,
     userId: user.id,
-    goalReached: false,
+    giftCardValue: giftCardValue,
   };
 
   const createCheckoutSession = async () => {
