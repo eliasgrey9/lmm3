@@ -1,20 +1,28 @@
+* {
+}
 .body {
   width: 100vw;
   height: 100px;
-  background-color: black;
-  color: white;
+  background-color: #fff;
   font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: #5b68ef;
+  font-weight: bold;
 }
 
 .logo {
   font-size: 24px;
-  margin-left: 20px;
+  padding: 20px;
 }
 .rightSideLinks {
   display: flex;
   justify-content: space-evenly;
   width: 20%;
+  text-decoration: none;
+}
+.rightSideLinks a {
+  text-decoration: none;
+  color: #5b68ef;
 }
