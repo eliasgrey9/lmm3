@@ -10,8 +10,8 @@ const Home = () => {
   const { userId } = useParams();
   const navigate = useNavigate();
   const navLinks = [
-    { to: "/credits", label: "Credits" },
-    { to: "/challenges", label: "Challenges" },
+    { to: `/credits/${userId}`, label: "Credits" },
+    { to: `/challenges/${userId}`, label: "Challenges" },
   ];
 
   useEffect(() => {
@@ -93,10 +93,9 @@ const Home = () => {
           <div className={style.subHeadingAndParagraph}>
             <div className={style.subHeading}>🎁 Victors Reap the Rewards</div>
             <div className={style.paragraph}>
-              🎁 Victors Reap the Rewards The power is in your hands! Dream up a
-              challenge that pushes the boundaries of fun and excitement. Invite
-              up to 4 friends, family members, or colleagues to join you on this
-              epic adventure.
+              The power is in your hands! Dream up a challenge that pushes the
+              boundaries of fun and excitement. Invite up to 4 friends, family
+              members, or colleagues to join you on this epic adventure.
             </div>
           </div>
           <div className={style.createChallengeBtn}>

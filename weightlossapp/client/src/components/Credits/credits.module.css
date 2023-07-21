@@ -1,0 +1,36 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f8f9fc;
+}
+
+.creditBoxes {
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  height: 60%;
+}
+.threeCreditBox {
+  width: 40%;
+  height: 60%;
+  background-color: white;
+}
+
+.tenCreditBox {
+  width: 40%;
+  height: 60%;
+  background-color: #5b68ef;
+  color: white;
+}
+.boxTitle {
+}
+
+.boxPrice {
+}
+
+.boxBuyButton {
+}

@@ -1,0 +1,68 @@
+.body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  border: solid black 1px;
+  width: 40%;
+  height: 50%;
+}
+.heading {
+  display: flex;
+  margin: 3%;
+  width: 100%;
+  justify-content: center;
+}
+.topInputs {
+  display: flex;
+  justify-content: space-evenly;
+}
+.titleAndInput {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+}
+.loseAndInput {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+.descriptionSection {
+  display: flex;
+  width: 100%;
+  height: 30%;
+  justify-content: center;
+}
+
+.descriptionLabelAndInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 77%;
+}
+
+.description {
+  height: 90%;
+  width: 100%;
+}
+.reviewSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30%;
+}
+.challengeReview {
+  width: 50%;
+}
+.buttonArea {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 3%;
+}

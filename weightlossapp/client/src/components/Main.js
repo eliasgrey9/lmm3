@@ -5,6 +5,7 @@ import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignUp/SignUp";
 import Credits from "./Credits/Credits";
 import Challenges from "./Challenges/Challenges";
+import CreateChallenge from "./CreateChallenge/CreateChallenge";
 
 const Main = () => {
   return (
@@ -14,8 +15,12 @@ const Main = () => {
         <Route path="/home/:userId" element={<Home />}></Route>
         <Route path="/signIn" element={<SignIn />}></Route>
         <Route path="/signUp" element={<SignUp />}></Route>
-        <Route path="/credits" element={<Credits />}></Route>
-        <Route path="/challenges" element={<Challenges />}></Route>
+        <Route path="/credits/:userId" element={<Credits />}></Route>
+        <Route path="/challenges/:userId" element={<Challenges />}></Route>
+        <Route
+          path="/createChallenge/:userId"
+          element={<CreateChallenge />}
+        ></Route>
 
         <Route path="/*" element={<Navigate to="/home/guest" />} />
       </Routes>
