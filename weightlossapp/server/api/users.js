@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { User, Goal } = require("../db");
+
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-require("dotenv").config();
-
 //This function helps us verify a user has been authenticated
 const authenticated = (req, res, next) => {
   try {

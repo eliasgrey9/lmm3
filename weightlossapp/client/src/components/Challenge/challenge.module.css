@@ -1,0 +1,77 @@
+.body {
+  display: flex;
+  width: 100vw;
+  height: 1200px;
+  background-color: #f8f9fc;
+}
+
+.leftSide {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* background-color: yellow; */
+}
+.currentWeightAndChallengeContainer {
+  margin-top: 4%;
+  display: flex;
+  justify-content: space-evenly;
+  /* background-color: green; */
+  height: 35%;
+}
+
+.currentWeight {
+  background-color: #7070f5;
+  border: solid gray 2px;
+  opacity: 0.8;
+  width: 30%;
+  height: 100%;
+}
+
+.challengeDescription {
+  width: 50%;
+  background-color: white;
+}
+.progressAndParticpantsSection {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressSection {
+  margin: 2%;
+  background-color: white;
+  width: 86.75%;
+  height: 40%;
+}
+
+.participantsSection {
+  background-color: white;
+  width: 86.75%;
+  height: 60%;
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  width: 25%;
+  height: 100%;
+}
+.credits {
+  width: 90%;
+  height: 24.5%;
+  margin-top: 11.25%;
+  background-color: white;
+}
+
+.notifications {
+  background-color: white;
+  height: 68.5%;
+  width: 90%;
+
+  margin-top: 4%;
+}

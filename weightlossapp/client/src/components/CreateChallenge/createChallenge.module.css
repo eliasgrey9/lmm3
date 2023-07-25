@@ -2,11 +2,14 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .form {
-  border: solid black 1px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: solid lightgray 1px;
   width: 40%;
   height: 50%;
 }
@@ -17,18 +20,28 @@
   justify-content: center;
 }
 .topInputs {
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
 .titleAndInput {
-  width: 55%;
   display: flex;
+  align-items: center;
   flex-direction: column;
+  width: 45%;
 }
-.loseAndInput {
-  width: 10%;
+.titleInput {
+  width: 90%;
+}
+
+.loseInputAndDropdown {
+  width: 25%;
+}
+.inputAndUnit {
   display: flex;
-  flex-direction: column;
+}
+.weightInput {
+  width: 40%;
 }
 
 .descriptionSection {
@@ -54,11 +67,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 30%;
+  width: 40%;
+  height: 50%;
+  border: lightgray 1px solid;
 }
 .challengeReview {
   width: 50%;
+  padding: 0 10%;
+  overflow-wrap: break-word;
 }
 .buttonArea {
   display: flex;

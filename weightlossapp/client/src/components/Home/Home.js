@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "./home.module.css";
 import Navbar from "../Navbar/Navbar";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 const Home = () => {
@@ -25,7 +25,6 @@ const Home = () => {
             options
           );
 
-          console.log("response", response);
           if (response) {
             // User is signed in and the ID matches
             setUserSignedIn(true);
@@ -58,7 +57,9 @@ const Home = () => {
           <div className={style.heroLeftBlock}>
             <div>Lose weight with friends</div>
             <div>
-              <button>Start now!</button>
+              <Link to={`/challenges/${userId}`}>
+                <button>Start now!</button>
+              </Link>
             </div>
           </div>
           <div className={style.heroRightBlock}>Example Image</div>
@@ -99,7 +100,9 @@ const Home = () => {
             </div>
           </div>
           <div className={style.createChallengeBtn}>
-            <button>Create challenge</button>
+            <Link to={`/challenges/${userId}`}>
+              <button>Create challenge</button>
+            </Link>
           </div>
         </div>
       </div>
