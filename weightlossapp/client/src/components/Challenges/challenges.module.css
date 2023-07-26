@@ -1,14 +1,16 @@
 .body {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: #f8f9fc;
 }
 
 .challengeBoxes {
-  width: 50%;
+  width: 100%;
   height: 30%;
+  flex-wrap: wrap;
   display: flex;
 }
 .createChallengeBox {
@@ -16,22 +18,44 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  border: solid black 1px;
+  width: 250px;
+  height: 250px;
+  border: dashed #5b68ef 5px;
   background-color: #e5e5fa;
+  text-decoration: none;
+
+  color: black;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.createChallengeBox:hover {
+  background-color: #e5e5fa9d;
 }
 .challengeBox {
   margin: 1.5%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  border: solid black 1px;
-  background-color: white;
+  width: 250px;
+  height: 250px;
+  background-color: #e5e5fa;
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.challengeBox:hover {
+  background-color: #e5e5fa9d;
 }
 .heading {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
   display: flex;
   width: 100%;
   justify-content: center;

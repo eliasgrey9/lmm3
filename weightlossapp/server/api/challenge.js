@@ -31,4 +31,25 @@ router.post("/create-challenge", async (req, res) => {
   }
 });
 
+router.get("/find-active-challenges-by-user/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+
+    const challengesByUser = await Challenge.findAll({
+      where: {
+        creatorId: userId,
+      },
+    });
+
+    // Assuming you have a valid challengesByUser data, you can send it in the response
+    res.status(200).json({ challengesByUser });
+  } catch (error) {
+    // Handle any errors that occurred during the request
+    console.error("Error finding active challenges by user:", error);
+    res
+      .status(500)
+      .json({ error: "Failed to retrieve active challenges by user" });
+  }
+});
+
 module.exports = router;

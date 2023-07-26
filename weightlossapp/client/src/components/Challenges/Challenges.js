@@ -6,6 +6,7 @@ import Navbar from "../Navbar/Navbar";
 
 const Challenges = () => {
   const [userSignedIn, setUserSignedIn] = useState(false);
+  const [allUserChallenges, setAllUserChallenges] = useState([]);
   const API_URL = process.env.REACT_APP_API_URL;
   const { userId } = useParams();
   const navigate = useNavigate();
@@ -47,6 +48,25 @@ const Challenges = () => {
     checkUser();
   }, [userId, navigate]);
 
+  useEffect(() => {
+    const fetchChallengesByUser = async () => {
+      try {
+        const response = await axios.get(
+          `${API_URL}/api/challenge/find-active-challenges-by-user/${userId}`
+        );
+
+        setAllUserChallenges(response.data.challengesByUser);
+
+        // Handle the response data as needed, e.g., store it in a state variable
+      } catch (error) {
+        console.error("Error fetching challenges by user:", error);
+        // Handle any errors that occurred during the API request
+      }
+    };
+
+    fetchChallengesByUser();
+  }, [userId]);
+
   return (
     <>
       <Navbar
@@ -63,7 +83,15 @@ const Challenges = () => {
           >
             <div>New Challenge +</div>
           </Link>
-          <div className={style.challengeBox}>Current Challenge</div>
+          {allUserChallenges.map((userChallenge) => (
+            <Link
+              className={style.challengeBox}
+              to={`/challenge/${userId}/${userChallenge.id}`}
+            >
+              <div>{userChallenge.title}</div>
+              <div>({userChallenge.status})</div>
+            </Link>
+          ))}
         </div>
       </div>
     </>

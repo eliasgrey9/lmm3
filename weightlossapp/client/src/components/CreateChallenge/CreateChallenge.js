@@ -12,7 +12,7 @@ const CreateChallenge = () => {
 
   const [weightToLose, setWeightToLose] = useState(0);
   const [currentWeight, setCurrentWeight] = useState(0);
-  const [selectedUnit, setSelectedUnit] = useState("lbs");
+  const [selectedUnit, setSelectedUnit] = useState("lb");
   const [prizeDescription, setPrizeDescription] = useState(
     "one month gym membership."
   );
@@ -83,6 +83,9 @@ const CreateChallenge = () => {
         }
       );
 
+      if (response) {
+        navigate(`/challenges/${userId}`);
+      }
       console.log(response.data);
     } catch (error) {
       // Handle any errors that occurred during the request
@@ -121,24 +124,18 @@ const CreateChallenge = () => {
                     }}
                   ></input>
                   <select
+                    className={style.dropdown}
                     id="unitSelect"
                     value={selectedUnit}
                     onChange={(e) => handleUnitChange(e.target.value)}
                   >
-                    <option value="lbs">lbs</option>
-                    <option value="kg">kg</option>
+                    <option value="lb">pounds</option>
+                    <option value="kg">kilograms</option>
                   </select>
                 </div>
               </div>
-              <div>
-                <label>How much do you currently weigh?</label>
-                <input
-                  onChange={(e) => {
-                    setCurrentWeight(e.target.value);
-                  }}
-                ></input>
-              </div>
             </div>
+
             <div className={style.descriptionSection}>
               <div className={style.descriptionLabelAndInput}>
                 <label>What does the winner get from each loser?</label>
@@ -151,15 +148,38 @@ const CreateChallenge = () => {
                 ></textarea>
               </div>
             </div>
+            <div className={style.currentWeightContainer}>
+              <div className={style.currentWeightHeading}>
+                Please provide your current weight honestly for the challenge.
+                We will use this information to calculate the remaining pounds.
+                Rest assured, this data will remain confidential and will not be
+                visible to anyone else. Thank you!
+                <div>
+                  I currently weigh
+                  <input
+                    className={style.currentWeightInput}
+                    onChange={(e) => {
+                      setCurrentWeight(e.target.value);
+                    }}
+                  ></input>
+                  {selectedUnit}'s
+                </div>
+              </div>
+            </div>
+            <div className={style.reviewSection}>
+              <div className={style.reviewHeading}>Review your challenge</div>
+              <div className={style.heading}>{title}</div>
+              <div className={style.challengeReview}>{challengeReview}</div>
+              <div className={style.buttonArea}>
+                <button
+                  className={style.startChallengeBtn}
+                  onClick={createNewChallenge}
+                >
+                  Start Challenge
+                </button>
+              </div>
+            </div>
           </form>
-        </div>
-        <div className={style.reviewSection}>
-          <div className={style.heading}>Review your challenge</div>
-          <div className={style.heading}>{title}</div>
-          <div className={style.challengeReview}>{challengeReview}</div>
-          <div className={style.buttonArea}>
-            <button onClick={createNewChallenge}>Start Challenge</button>
-          </div>
         </div>
       </div>
     </>

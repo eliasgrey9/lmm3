@@ -1,79 +1,112 @@
 .body {
   width: 100vw;
-  height: 100vh;
+  height: 1000px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fc;
 }
 
 .form {
+  color: white;
+  font-weight: bold;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   border: solid lightgray 1px;
-  width: 40%;
-  height: 50%;
+  width: 60%;
+  height: 90%;
+  background-color: #5b68ef;
+  opacity: 0.8;
+  border-radius: 5px;
 }
 .heading {
   display: flex;
   margin: 3%;
   width: 100%;
   justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 30px;
 }
 .topInputs {
+  margin: 5% 0 0 0;
   width: 100%;
+  height: 10%;
+
   display: flex;
   justify-content: space-evenly;
 }
 .titleAndInput {
   display: flex;
-  align-items: center;
   flex-direction: column;
   width: 45%;
+  height: 100%;
 }
 .titleInput {
   width: 90%;
+  height: 40%;
 }
 
 .loseInputAndDropdown {
   width: 25%;
+  height: 100%;
 }
 .inputAndUnit {
   display: flex;
+  height: 50%;
 }
+
 .weightInput {
-  width: 40%;
+  width: 50%;
+  height: 81%;
 }
 
 .descriptionSection {
   display: flex;
   width: 100%;
-  height: 30%;
+  height: 25%;
   justify-content: center;
+  margin: 5% 0 0 0;
 }
 
 .descriptionLabelAndInput {
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 77%;
+  width: 80%;
 }
 
 .description {
   height: 90%;
   width: 100%;
 }
+
+.currentWeightContainer {
+  margin: 5% 0 0 0;
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.currentWeightInput {
+  width: 25%;
+  margin: 5% 1%;
+}
+.currentWeightHeading {
+  width: 70%;
+  margin: 5% 0;
+}
+
 .reviewSection {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  width: 40%;
-  height: 50%;
-  border: lightgray 1px solid;
+  width: 100%;
 }
 .challengeReview {
   width: 50%;
-  padding: 0 10%;
   overflow-wrap: break-word;
 }
 .buttonArea {
@@ -81,4 +114,17 @@
   justify-content: center;
   width: 100%;
   margin: 3%;
+}
+
+.startChallengeBtn {
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+  border: solid black 1px;
+  border-radius: 5px;
+  background-color: transparent;
+  height: 40px;
+  width: 25%;
+  cursor: pointer;
 }
