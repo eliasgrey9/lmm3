@@ -43,7 +43,6 @@ const CreateChallenge = () => {
             options
           );
 
-          console.log("response", response);
           if (response) {
             // User is signed in and the ID matches
             setUserSignedIn(true);
@@ -62,34 +61,24 @@ const CreateChallenge = () => {
     };
 
     checkUser();
-  }, [userId, navigate]);
+  }, [userId]);
 
   const handleUnitChange = (unit) => {
     setSelectedUnit(unit);
   };
 
-  const createNewChallenge = async () => {
-    try {
-      const response = await axios.post(
-        `${API_URL}/api/challenge/create-challenge`,
-        {
-          title: title,
-          weightToLose: weightToLose,
-          creatorId: userId,
-          units: selectedUnit,
-          currentWeight: currentWeight,
-          status: "Active",
-          prizeDescription: prizeDescription,
-        }
-      );
-
-      if (response) {
-        navigate(`/challenges/${userId}`);
-      }
-      console.log(response.data);
-    } catch (error) {
-      // Handle any errors that occurred during the request
-      console.error("Error creating challenge:", error);
+  const createNewChallenge = () => {
+    const response = axios.post(`${API_URL}/api/challenge/create-challenge`, {
+      title: title,
+      weightToLose: weightToLose,
+      creatorId: userId,
+      units: selectedUnit,
+      currentWeight: currentWeight,
+      status: "Active",
+      prizeDescription: prizeDescription,
+    });
+    if (response) {
+      navigate(`/challenges/${userId}`);
     }
   };
 

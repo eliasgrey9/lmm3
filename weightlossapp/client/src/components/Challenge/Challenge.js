@@ -31,7 +31,6 @@ const Challenge = () => {
             options
           );
 
-          console.log("response", response);
           if (response) {
             // User is signed in and the ID matches
             setUserSignedIn(true);

@@ -128,3 +128,6 @@
   width: 25%;
   cursor: pointer;
 }
+.startChallengeBtn:hover {
+  border: solid white 1px;
+}

@@ -27,7 +27,6 @@ const Challenges = () => {
             options
           );
 
-          console.log("response", response);
           if (response) {
             // User is signed in and the ID matches
             setUserSignedIn(true);
@@ -85,6 +84,7 @@ const Challenges = () => {
           </Link>
           {allUserChallenges.map((userChallenge) => (
             <Link
+              key={userChallenge.id}
               className={style.challengeBox}
               to={`/challenge/${userId}/${userChallenge.id}`}
             >
