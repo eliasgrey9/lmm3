@@ -24,7 +24,11 @@ router.post("/create-challenge", async (req, res) => {
       outcome: null,
     });
 
-    res.status(201).json({ message: "Challenge created successfully!" });
+    // Send the created challenge data in the response
+    res.status(201).json({
+      message: "Challenge created successfully!",
+      challenge: newChallenge, // Include the created challenge data in the response
+    });
   } catch (err) {
     console.error("Error creating challenge:", err);
     res.status(500).json({ error: "Failed to create challenge" });

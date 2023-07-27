@@ -53,21 +53,17 @@ const Credits = () => {
         setUserSignedIn={setUserSignedIn}
       />
       <div className={style.body}>
-        <div>Buy credits. Sabotage. Defend.</div>
+        <div className={style.heading}>Buy credits. Sabotage. Defend.</div>
         <div className={style.creditBoxes}>
-          <div className={style.threeCreditBox}>
+          <div className={style.creditBox}>
             <div className={style.boxTitle}>3 Credits</div>
             <div className={style.boxPrice}>$4.99</div>
-            <div className={style.boxBuyBtn}>
-              <button>Buy</button>
-            </div>
+            <button className={style.boxBuyBtn}>Buy</button>
           </div>
-          <div className={style.tenCreditBox}>
+          <div className={style.creditBox}>
             <div className={style.boxTitle}>10 Credits</div>
             <div className={style.boxPrice}>$9.99</div>
-            <div className={style.boxBuyBtn}>
-              <button>Buy</button>
-            </div>
+            <button className={style.boxBuyBtn}>Buy</button>
           </div>
         </div>
       </div>
