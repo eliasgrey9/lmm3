@@ -14,7 +14,12 @@ const Challenge = () => {
   const [userSignedIn, setUserSignedIn] = useState(false);
   const API_URL = process.env.REACT_APP_API_URL;
   const { userId } = useParams(0);
+  const { challengeId } = useParams(0);
   const navigate = useNavigate();
+
+  const [currentWeight, setCurrentWeight] = useState(0);
+  const [currentChallenge, setCurrentChallenge] = useState({});
+  const [currentParticipants, setCurrentParticipants] = useState([]);
 
   const navLinks = [
     { to: `/credits/${userId}`, label: "Credits" },
@@ -50,6 +55,22 @@ const Challenge = () => {
 
     checkUser();
   }, [userId, navigate]);
+
+  useEffect(() => {
+    const findChallengeAndParticipants = async () => {
+      const response = await axios.get(
+        `${API_URL}/api/challenge/get-challenge-and-participants/${challengeId}`
+      );
+
+      if (response) {
+        setCurrentChallenge(response.data.challenge[0]);
+        setCurrentParticipants(response.data.participants);
+      }
+    };
+
+    findChallengeAndParticipants();
+  }, [challengeId]);
+
   return (
     <>
       <Navbar
@@ -61,7 +82,12 @@ const Challenge = () => {
         <div className={style.leftSide}>
           <div className={style.currentWeightAndChallengeContainer}>
             <div className={style.currentWeight}>
-              <CurrentWeight />
+              <CurrentWeight
+                challengeId={challengeId}
+                userId={userId}
+                currentParticipants={currentParticipants}
+                units={currentChallenge.units}
+              />
             </div>
             <div className={style.challengeDescription}>
               <ChallengeDescription />

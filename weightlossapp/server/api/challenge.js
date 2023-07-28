@@ -56,4 +56,29 @@ router.get("/find-active-challenges-by-user/:userId", async (req, res) => {
   }
 });
 
+router.get("/get-challenge-and-participants/:challengeId", async (req, res) => {
+  const challengeId = req.params.challengeId;
+
+  try {
+    const currentChallenge = await Challenge.findAll({
+      where: { id: challengeId },
+    });
+
+    const currentParticipants = await Participant.findAll({
+      where: { challengeId: challengeId },
+    });
+
+    // Combine the challenge and participant data into a single object
+    const data = {
+      challenge: currentChallenge,
+      participants: currentParticipants,
+    };
+
+    res.send(data);
+  } catch (error) {
+    // Handle errors if any occur during database queries
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 module.exports = router;
